@@ -5,16 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="login.css">
     <title>Login</title>
+    <script>
+        function validateForm() {
+            var email = document.getElementById("email").value;
+            if (email.indexOf("@admin.com") == -1) {
+                alert("Please enter a valid admin email address.");
+                return false;
+            }
+            return true;
+        }
+    </script>
 </head>
 <body>
     <div class="container">
         <h1>Login</h1>
-        <form id="login-form" method="post" action="login.php">
+        <form id="login-form" method="post" action="adminlogin.php">
             <p><b>Email :</b></p> <input type="text" placeholder="Email" name="Email" required>
             <p><b>Password :</b></p><input type="password" placeholder="Password" name="password" required>
             <button type="submit">Login</button>
         </form>
-        <p><b>Don't have an account?</b> <a href="signup.html"><b>Sign Up</b></a></p>
     </div>
 
     <?php
@@ -39,7 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $db_pass = $row['Password']; // Retrieve password from database
         if ($pass === $db_pass) {
             // Password is correct, redirect to home page
-            header('Location: index-admin.html');
+            header('Location: adminMainpage.php');
             exit;
         } else {
             // Password is incorrect

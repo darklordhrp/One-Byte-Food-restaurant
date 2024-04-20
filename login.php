@@ -1,22 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="login.css">
-    <title>Login</title>
-</head>
-<body>
-    <div class="container">
-        <h1>Login</h1>
-        <form id="login-form" method="post" action="login.php">
-            <p><b>Email :</b></p> <input type="text" placeholder="Email" name="Email" required>
-            <p><b>Password :</b></p><input type="password" placeholder="Password" name="password" required>
-            <button type="submit">Login</button>
-        </form>
-        <p><b>Don't have an account?</b> <a href="signup.php"><b>Sign Up</b></a></p>
-    </div>
-    
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $conn = mysqli_connect("localhost", "root", "", "users");
@@ -34,15 +15,45 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             header('Location: Mainpage.html');
             exit;
         } else {
-            echo "Incorrect password.";
+            echo "<script>alert('Incorrect password.');</script>";
         }
     } else {
-        echo "User does not exist.";
+        echo "<script>alert('Email not found or invalid.');</script>";
     }
 
     $conn->close();
 }
 ?>
 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="login.css">
+    <title>Login</title>
+    <script>
+        function validateForm() {
+            var email = document.getElementById("email").value;
+            if (email.indexOf("@") == -1) {
+                alert("Please enter a valid email address.");
+                return false;
+            }
+            return true;
+        }
+    </script>
+</head>
+<body >
+    <div class="container">
+        <h1>Login</h1>
+        <form action="login.php" method="post">
+            <p><b>Email :</b></p> <input type="text" placeholder="Email" name="Email" required>
+            <p><b>Password :</b></p><input type="password" placeholder="Password" name="password" required>
+            <button type="submit">Login</button>
+        </form>
+        
+        <p><b>Don't have an account?</b> <a href="signup.php"><b>Sign Up</b></a></p>
+    </div>
 </body>
 </html>

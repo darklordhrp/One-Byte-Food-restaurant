@@ -1,3 +1,24 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>One Byte Foods</title>
+    <link rel="stylesheet" href="userDetails.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>User Details</h1>
+            <nav>
+                <ul>
+                </ul>
+            </nav>
+        </div>
+    </header>
+</body>
+</html> -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +35,7 @@
 
         th, td {
             border: 1px solid #333; 
-            padding: 8px;
+            padding: 5px;
             text-align: left;
         }
 
@@ -29,7 +50,7 @@
 <body>
     <header>
         <div class="container">
-            <a href="index-admin.html" class="logo-link">
+            <a href="adminMainpage.php" class="logo-link">
                 <h1>One Byte Foods</h1>
             </a>
             <nav>
@@ -45,6 +66,7 @@
     <div class="container">
         <table>
             <tr>
+                <th>ID</th>
                 <th>Name</th>
                 <th>Email</th>
                 <th>Phone</th>
@@ -55,14 +77,14 @@
             if ($conn->connect_error) {
                 die("Connection failed: " . $conn->connect_error);
             }
-            $sql = "SELECT Name, Email, Phone_Number FROM signup";
+            $sql = "SELECT ID,Name, Email, Phone_Number FROM signup";
             $result = $conn->query($sql);
             if ($result->num_rows > 0) {
                 while($row = $result->fetch_assoc()) {
-                    echo "<tr><td>".$row["Name"]."</td><td>".$row["Email"]."</td><td>".$row["Phone_Number"]."</td></tr>";
+                    echo "<tr><td>".$row["ID"]."</td><td>".$row["Name"]."</td><td>".$row["Email"]."</td><td>".$row["Phone_Number"]."</td></tr>";
                 }
             } else {
-                echo "<tr><td colspan='3'>0 results</td></tr>";
+                echo "<tr><td colspan='2'>0 results</td></tr>";
             }
 
             $conn->close();
