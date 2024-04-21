@@ -45,6 +45,7 @@
         tr{
             background-color: #f2f2f2;
         }
+        
     </style>
 </head>
 <body>
@@ -89,7 +90,7 @@
 
             $conn->close();
             ?>
-        </table>
+        </table> 
     </div>
 </body>
 </html>
