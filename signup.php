@@ -43,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Insert data into the database
     $sql = "INSERT INTO signup (Name, Email, Phone_Number, Password) VALUES ('$username', '$email', '$phone', '$password')";
     if (mysqli_query($conn, $sql)) {
-        // Data inserted successfully, redirect to login page
+        // Data inserted successfully, redirect towards login page
         header("Location: login.html");
         exit;
     } else {
