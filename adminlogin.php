@@ -30,7 +30,7 @@
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $conn = mysqli_connect("localhost", "root", "", "users");
 
-    // Check connection
+    // Checking connection
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
@@ -43,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
-        // User exists, verify password
+        // If User exists, verify password
         $row = $result->fetch_assoc();
         $db_pass = $row['Password']; // Retrieve password from database
         if ($pass === $db_pass) {
@@ -55,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo "Incorrect password.";
         }
     } else {
-        // User does not exist
+        //In Case  User does not exist
         echo "User does not exist.";
     }
 
