@@ -23,5 +23,7 @@
         <button class="middle-btn1"><a href="Tables.html"><b>Tables</b></a></button>
         <button class="middle-btn1"><a href="feedback.html"><b>Feedbacks</b></a></button>
     </div>
+    
 </body>
+    
 </html>
